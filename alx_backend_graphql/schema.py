@@ -3,4 +3,6 @@
 import graphene
 
 class Query(graphene.ObjectType):
-    pass
+    hello = qraphene.String(default_value='Hello, GraphQL!')
+
+schema = graphene.Schema(query=Query)
