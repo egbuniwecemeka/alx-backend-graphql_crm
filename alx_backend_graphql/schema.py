@@ -1,8 +1,0 @@
-#!/usr/bin/env python3
-
-import graphene
-
-class Query(graphene.ObjectType):
-    hello = qraphene.String(default_value='Hello, GraphQL!')
-
-schema = graphene.Schema(query=Query)
