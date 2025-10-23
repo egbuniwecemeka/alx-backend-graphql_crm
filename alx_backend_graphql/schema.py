@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from graphene import ObjectType
+import graphene
 
-class Query(ObjectType):
+class Query(graphene.ObjectType):
     pass
