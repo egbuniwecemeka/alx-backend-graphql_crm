@@ -1,5 +1,5 @@
 from django.db import models
 
 # Create your models here.
-class Customers():
+class Customers(models.Model):
     pass
