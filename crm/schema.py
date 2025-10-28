@@ -4,6 +4,12 @@ import graphene
 from .models import Customers
 import re
 
+
+class Meta:
+    model = Customer
+    fields = ("id", "name", "email", "phone")
+
+
 class CRMQuery():
     hello = graphene.String(default_value='Hello, GraphQL!')
 
