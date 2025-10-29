@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import graphene
+from graphene_django import DjangoObjectType
 from .models import Customer
 import re
 
@@ -8,6 +9,12 @@ import re
 class Meta:
     model = Customer
     fields = ("id", "name", "email", "phone")
+
+
+class CustomerNode(DjangoObjectType):
+    class Meta:
+        model = Customer
+        interfaces = (graphene.relay.Node,)
 
 
 class CRMQuery():
@@ -116,6 +123,7 @@ class CreateProduct(graphene.Mutation):
 
 class CreateOrder():
     pass
+
 
 
 class Mutation(graphene.ObjectType):
