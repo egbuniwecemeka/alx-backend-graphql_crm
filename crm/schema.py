@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import graphene
-from graphene_django import DjangoObjectType
+from graphene_django import DjangoObjectType, DjangoFilterConnectionField
 from .models import Customer
+from .filters import CustomerFilter
 import re
 
 
@@ -15,14 +16,25 @@ class CustomerNode(DjangoObjectType):
     class Meta:
         model = Customer
         interfaces = (graphene.relay.Node,)
+        fields = ("id", "name", "email", "phone")
+        all_customers = DjangoFilterConnectionField()
 
 
 class CRMQuery():
+    """ """
     hello = graphene.String(default_value='Hello, GraphQL!')
 
 
 class Query(graphene.ObjectType):
-    all_customers = graphene.List(CustomerType)
+    """ """
+    all_customers = DjangoFilterConnectionField(
+        CustomerNode,
+        filterset_class=CustomerFilter
+    )
+
+    def resolve_all_customers(root, info, **kwargs):
+        """ """
+        return Customer.objects.all()
 
 
 class CreateCustomer(graphene.Mutation):
@@ -123,7 +135,6 @@ class CreateProduct(graphene.Mutation):
 
 class CreateOrder():
     pass
-
 
 
 class Mutation(graphene.ObjectType):
