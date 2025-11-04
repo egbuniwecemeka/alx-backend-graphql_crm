@@ -1,1 +1,1 @@
-02**0/mnt/c/Users/Emmanueleg/Desktop/ALX/alx-backend-graphql_crm/crm/cron_jobs/customer_cleanup_crontab.txt
+['0 2 * * 0', '/mnt/c/Users/Emmanueleg/Desktop/ALX/alx-backend-graphql_crm/crm/cron_jobs/customer_cleanup_crontab.txt']
